@@ -6,4 +6,41 @@ This is a sample web point api endpoint to receive messages from ushaidi's SMS G
 It will sync and save all incoming mobile messages to an online web application portal that you can access them from and do with them as you may wish.
 
 **_Set Up Instructions_**
-1. 
+
+1. Create a project folder, setup virtual environment and clone the project
+```
+$ mkdir smssync
+$ cd smssync
+$ virtualenv -p python3 env
+$ source env/bin/activate
+$ git clone https://github.com/ngenovictor/smssync.git
+$ cd smssync
+```
+
+2. Install python libraries required for the app to run
+```
+pip install < requirements.txt
+```
+
+3. Create local\_settings file. For security concerns a file local\_settings is created that only the developer sees and is not uploaded to github so you have to create it. Rename **_sample\_local\_settings.py_** to **_local\_settings.py_**
+```
+$ mv smssync/sample_local_settings.py smssync/local_settings.py
+```
+
+4. Run the app locally on your machine
+```
+$ python manage.py runserver
+```
+
+5. Make a POST request to the endpoint [localhost:8000/sms](localhost:8000/sms) with a json payload using the example format below:
+```
+{
+    'secret': '123456', 
+    'from': '+254720123456', 
+    'message_id': 1, 
+    'message': 'hey this is a message', 
+    'sent_timestamp': '12-12-12', 
+    'sent_to': '+254736736736', 
+    'device_id': 'victor'
+}
+```
