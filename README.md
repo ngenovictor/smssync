@@ -33,13 +33,26 @@ $ mv smssync/sample_local_settings.py smssync/local_settings.py
 > - Copy one of the generated keys
 > - Replace **_SECRET\_KEY = 'my\_production\_secret'_** in the newly created **_local\_settings.py_** to **_SECRET\_KEY = 'above\_copied\_key'_**
 
-
-5. Run the app locally on your machine
-```bh
-$ python manage.py runserver
+5. Create the DB records
+```bash
+$ python manage.py makemigrations
+$ python manage.py migrate
 ```
 
-6. Make a POST request to the endpoint [localhost:8000/sms](http://localhost:8000/sms) with a json payload using the example format below:
+6. Create an admin user that will be used to access the admin page at [localhost:8000/admin](localhost:8000/admin)
+```bash
+$ python manage.py createsuperuser
+```
+
+6. Run the app locally on your machine. 0.0.0.0 will ensure you can access the application from any device within the same network. You can chose any port.
+```bash
+$ python manage.py runserver 0.0.0.0:8000
+```
+
+
+**_Using the application_**
+
+1. Make a POST request to the endpoint [localhost:8000/sms](http://localhost:8000/sms) with a json payload using the example format below:
 ```js
 {
     'secret': '123456', 
@@ -52,7 +65,17 @@ $ python manage.py runserver
 }
 ```
 
-7. As for now the secret is '123456'.
+2. Using with the Ushahidi SMS Gateway android app [SMSSync](http://smssync.ushahidi.com/)
+
+> - On the app navigate to Integrations, then Custom web service and add a web service
+> - On the url: if the app is running locally use http://your\_ip\_address:8000/sms else if hosted use http://www.example.com/sms
+> - set the secret key as 123456
+> - set the data format as JSON
+> - leave everything else as they are.
+> - Test the integration. If not successful something has gone wrong. Review above instructions else save the setting.
+> - try and publish an sms
+
+As for now the secret is '123456'.
 
 **_Contributors_**
 
