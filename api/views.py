@@ -15,7 +15,6 @@ from api.serializer import MessageSerializer
 def sms_details(request):
     if request.method == "POST":
         data = JSONParser().parse(request)
-        print(data)
 
         try:
             secret = data["secret"]
@@ -77,7 +76,6 @@ def sms_details(request):
 
 
         reply = {"payload":{"success": success},"message":message}
-        print(reply)
         
         return JsonResponse(reply)
 
