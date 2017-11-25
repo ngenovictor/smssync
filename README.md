@@ -1,4 +1,4 @@
-##SMS Sync API WEB GATEWAY
+## SMS Sync API WEB GATEWAY
 
 **_About_**
 
