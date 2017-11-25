@@ -27,20 +27,36 @@ $ pip install < requirements.txt
 $ mv smssync/sample_local_settings.py smssync/local_settings.py
 ```
 
-4. Run the app locally on your machine
+4. Generate secret key
+
+> - Go to [https://djskgen.herokuapp.com](https://djskgen.herokuapp.com) press **_Generate keys_**
+> - Copy one of the generated keys
+> - Replace **_SECRET\_KEY = 'my\_production\_secret'_** in the newly created **_local\_settings.py_** to **_SECRET\_KEY = 'above\_copied\_key'_**
+
+
+5. Run the app locally on your machine
 ```bh
 $ python manage.py runserver
 ```
 
-5. Make a POST request to the endpoint [localhost:8000/sms](localhost:8000/sms) with a json payload using the example format below:
+6. Make a POST request to the endpoint [localhost:8000/sms](http://localhost:8000/sms) with a json payload using the example format below:
 ```js
 {
     'secret': '123456', 
     'from': '+254720123456', 
-    'message_id': 1, 
+    'message_id': 'shb-45hbh-567', 
     'message': 'hey this is a message', 
-    'sent_timestamp': '12-12-12', 
+    'sent_timestamp': '12579291212', 
     'sent_to': '+254736736736', 
     'device_id': 'victor'
 }
 ```
+
+7. As for now the secret is '123456'.
+
+**_Contributors_**
+[Victor](https://github.com/ngenovictor)
+
+**_License and Copyright_**
+Licensed under [MIT License](license)
+
