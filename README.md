@@ -8,7 +8,7 @@ It will sync and save all incoming mobile messages to an online web application 
 **_Set Up Instructions_**
 
 1. Create a project folder, setup virtual environment and clone the project
-```
+```bash
 $ mkdir smssync
 $ cd smssync
 $ virtualenv -p python3 env
@@ -18,22 +18,22 @@ $ cd smssync
 ```
 
 2. Install python libraries required for the app to run
-```
-pip install < requirements.txt
+```bash
+$ pip install < requirements.txt
 ```
 
 3. Create local\_settings file. For security concerns a file local\_settings is created that only the developer sees and is not uploaded to github so you have to create it. Rename **_sample\_local\_settings.py_** to **_local\_settings.py_**
-```
+```bash
 $ mv smssync/sample_local_settings.py smssync/local_settings.py
 ```
 
 4. Run the app locally on your machine
-```
+```bh
 $ python manage.py runserver
 ```
 
 5. Make a POST request to the endpoint [localhost:8000/sms](localhost:8000/sms) with a json payload using the example format below:
-```
+```js
 {
     'secret': '123456', 
     'from': '+254720123456', 
