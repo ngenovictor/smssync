@@ -39,7 +39,7 @@ def sms_details(request):
 
         
 
-        if len(message) > 0 and len(sent_to) > 0 or len(num_from) > 0 and success == "true":
+        if len(message) > 0 and success == "true":
             if secret != "123456":
                 success = "false"
             else:
@@ -54,30 +54,22 @@ def sms_details(request):
                 serializer = MessageSerializer(data=data)
                 if serializer.is_valid():
                     serializer.save()
-
-                # string = "From : %s\n" %(num_from)
-                # string += "Message: %s\n" %(message)
-                # string += "Timestamp: %s\n" %(sent_timestamp)
-                # string += "Message Id: %s\n" %(message_id)
-                # string += "Sent to: %s\n\n\n" %(sent_to)
-
-
-                # writefile = "log.txt"
-
-                # fh = open(os.path.join(settings.MEDIA_ROOT, writefile), 'a')
-
-                # fh.write(string)
-
-                # fh.close()
-
+                    message = "your sms was saved"
+                    reply = {"payload":{"success": success},"message":message}
+                    print(reply)     
+                    return JsonResponse(reply)
+                else:
+                    message = "your data could not be saved"
+                    errors = serializer.errors
+                    reply = {"payload":{"success": success},"message":message, "errors":errors}
+                    print(reply)     
+                    return JsonResponse(reply)
         else:
             message = "your data was incorrect check if you are missing a parameter"
             success = "false"
-
-
-        reply = {"payload":{"success": success},"message":message}
-        
-        return JsonResponse(reply)
+            reply = {"payload":{"success": success},"message":message}   
+            print(reply)     
+            return JsonResponse(reply)
 
 def home(request):
     reply = {
