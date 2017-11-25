@@ -22,14 +22,15 @@ $ cd smssync
 $ pip install < requirements.txt
 ```
 
-3. Create local\_settings file. For security concerns a file local\_settings is created that only the developer sees and is not uploaded to github so you have to create it. Rename **_sample\_local\_settings.py_** to **_local\_settings.py_**
-```bash
-$ mv smssync/sample_local_settings.py smssync/local_settings.py
-```
+3. Create local\_settings file. 
+> For security concerns a file local\_settings is created that only the developer sees and is not uploaded to github so you have to create it. Rename **_sample\_local\_settings.py_** to **_local\_settings.py_**
+>```bash
+>$ mv smssync/sample_local_settings.py smssync/local_settings.py
+>```
 
 4. Generate secret key
 
-> - Go to [https://djskgen.herokuapp.com](https://djskgen.herokuapp.com) press **_Generate keys_**
+> - Go to [https://djskgen.herokuapp.com](https://djskgen.herokuapp.com) and press **_Generate keys_**
 > - Copy one of the generated keys
 > - Replace **_SECRET\_KEY = 'my\_production\_secret'_** in the newly created **_local\_settings.py_** to **_SECRET\_KEY = 'above\_copied\_key'_**
 
@@ -39,7 +40,7 @@ $ python manage.py makemigrations
 $ python manage.py migrate
 ```
 
-6. Create an admin user that will be used to access the admin page at [localhost:8000/admin](localhost:8000/admin)
+6. Create an admin user that will be used to access the admin page at [localhost:8000/admin](http://localhost:8000/admin)
 ```bash
 $ python manage.py createsuperuser
 ```
