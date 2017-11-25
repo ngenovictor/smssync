@@ -55,8 +55,11 @@ $ python manage.py runserver
 7. As for now the secret is '123456'.
 
 **_Contributors_**
+
 [Victor](https://github.com/ngenovictor)
+Contact me [ngenovictor321@gmail.com](mailto:ngenovictor321@gmail.com)
 
 **_License and Copyright_**
+
 Licensed under [MIT License](license)
 
