@@ -56,19 +56,16 @@ def sms_details(request):
                     serializer.save()
                     message = "your sms was saved"
                     reply = {"payload":{"success": success},"message":message}
-                    print(reply)     
                     return JsonResponse(reply)
                 else:
                     message = "your data could not be saved"
                     errors = serializer.errors
-                    reply = {"payload":{"success": success},"message":message, "errors":errors}
-                    print(reply)     
+                    reply = {"payload":{"success": success},"message":message, "errors":errors}    
                     return JsonResponse(reply)
         else:
             message = "your data was incorrect check if you are missing a parameter"
             success = "false"
-            reply = {"payload":{"success": success},"message":message}   
-            print(reply)     
+            reply = {"payload":{"success": success},"message":message}        
             return JsonResponse(reply)
 
 def home(request):
