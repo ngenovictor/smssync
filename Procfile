@@ -1,0 +1,1 @@
+web: gunicorn smssync.wsgi --log-file -
